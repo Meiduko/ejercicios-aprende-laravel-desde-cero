@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ejercicio3Controller;
 use App\Http\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -88,3 +89,5 @@ Route::post('/ejercicio2/c', function(Request $request) {
         ]
     );
 });
+
+Route::post('/ejercicio3',[ejercicio3Controller::class, 'store'])->name('ejercicio3.store');
