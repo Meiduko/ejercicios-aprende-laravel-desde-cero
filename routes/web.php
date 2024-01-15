@@ -91,3 +91,6 @@ Route::post('/ejercicio2/c', function(Request $request) {
 });
 
 Route::post('/ejercicio3',[ejercicio3Controller::class, 'store'])->name('ejercicio3.store');
+
+
+Route::resource('products', ProductController::class);
