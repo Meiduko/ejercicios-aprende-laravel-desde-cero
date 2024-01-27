@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreProductsRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class ProductController extends Controller
 {
@@ -45,6 +46,8 @@ class ProductController extends Controller
         $data = $request->validate($this->productRules);
 
         $product = auth()->user()->products()->create($data);
+
+        Log::info('Product created', ['product' => $product]);
 
         return response()->json([
             'message' => 'Product created successfully',
@@ -108,6 +111,8 @@ class ProductController extends Controller
         $this->authorize('delete', $product);
 
         $product->delete();
+
+        Log::info('Product deleted', ['product' => $product]);
 
         return response()->json([
             'message' => 'Product deleted successfully',
